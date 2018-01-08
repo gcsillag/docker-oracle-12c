@@ -11,16 +11,11 @@ ln -s /u01/app/oracle-product /u01/app/oracle/product
 /u01/app/oraInventory/orainstRoot.sh > /dev/null 2>&1
 echo | /u01/app/oracle/product/12.1.0/xe/root.sh > /dev/null 2>&1 || true
 
-if [ -z "$CHARACTER_SET" ]; then
-	if [ "${USE_UTF8_IF_CHARSET_EMPTY}" == "true" ]; then
-		export CHARACTER_SET="AL32UTF8"
-	fi
-fi
+export CHARACTER_SET="AL32UTF8"
 
-if [ -n "$CHARACTER_SET" ]; then
-	export CHARSET_MOD="NLS_LANG=.$CHARACTER_SET"
-	export CHARSET_INIT="-characterSet $CHARACTER_SET"
-fi
+export CHARSET_MOD="NLS_LANG=HUNGARIAN_HUNGARY.AL32UTF8"
+export CHARSET_INIT="-characterSet $CHARACTER_SET"
+
 
 
 impdp () {
